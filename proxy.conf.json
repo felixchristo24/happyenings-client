@@ -1,0 +1,6 @@
+{
+    "/api/*": {
+      "target": "https://happyenings.herokuapp.com",
+      "secure": false
+    }
+  }

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="col-12 row">
+    <div class="col-6">
+      <a class="navbar-brand form-inline" routerLink="/"><img style="width: 2rem;" src="../assets/hpe-02.png">Happyenings<p
+          class="font-weight-light" style="font-size: 0.6rem;">
+        </p>
+      </a>
+    </div>
+
+    <div class="col-6 ">
+      <div class="weather-wrapper mb-2">
+        <div class="weather-card madrid">
+            <div class="weather-icon sun"></div>
+            <h1>{{temp}}º C</h1>
+        </div>
+    </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="col-12 text-center" style="margin-top:8rem">
+  <p style="font-family: 'Lato', sans-serif;font-weight:600;color: rgba(0, 0, 0, 0.9);">Trichy Covid Case 14/08/2020</p>
+  <ngx-gallery class="mt-2" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+</div>
+
+

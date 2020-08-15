@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="col-12 row no-gutters">
+    <div class="col-6">
+      <a class="navbar-brand form-inline" routerLink="/"><img style="width: 2rem;" src="../assets/hpe-02.png">Happyenings<p
+          class="font-weight-light" style="font-size: 0.6rem;">
+        </p>
+      </a>
+    </div>
+
+    <div class="col-6 p-0">
+      <a class="navbar-brand form-inline mt-2" style="font-size: 1rem!important;float:right;font-weight: 600;" routerLink="/covid"><img style="width: 2rem;" src="../../assets/covid/corona.png"> Daily List<p
+        class="font-weight-light" style="font-size: 0.2rem;">
+      </p>
+    </a>
+    
+
+  </div>
+  </div>
+</nav>
+
+
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+
+<header class="masthead">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-md-4 col-lg-4col-xl-4 col-sm-12" style="padding-top: 8rem;">
+        <p style="font-weight: 600; color: slategray;">Whats Happening In Trichy</p>
+        <div class=" card shadow-lg scroll">
+          <div class="mt-2" *ngFor="let news of newsArr">
+            <div class="card-body mt-2">
+              <div class="row">
+                <div class="col-10 ">
+                  <strong>{{news.title}}</strong>
+                  <br />
+                  <small>{{news.publishedAt | date:'medium'}}</small>
+                  <img class="mt-3" style="width: 27rem;" src={{news.image}}>
+                  <p class="mt-2">{{news.description}}</p>
+                  <p class="mt-2">Full article: <a href="url">Click Here</a></p>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4col-xl-4 col-sm-12" style="padding-top: 8rem;">
+        <p style="font-weight: 600; color: slategray;">See What People Talks About Corona In Trichy</p>
+        <div class=" card shadow-lg scroll">
+          <div class="mt-1" *ngFor="let tweet of trichyArr">
+            <div class="card-body">
+              <p class="mr-1 " style="word-spacing: 3px;"><img src={{tweet.user.profile_image_url}} class="rounded mr-2"
+                  width="25">{{tweet.user.name}} <b style="color: blueviolet;">@{{tweet.user.screen_name}}</b></p>
+              <p class="ml-3">{{tweet.text }}</p>
+              <p *ngIf="tweet.entities.urls.length != 0" class="ml-3">Full tweet : <a
+                  href={{tweet.entities.urls[0].url}}>{{tweet.entities.urls[0].url}}</a> </p>
+              <p class="ml-3" style="color: #1da0f2;">{{tweet.created_at | date:'medium'}}</p>
+            </div>
+            <hr class="m-0">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4col-xl-4 col-sm-12" style="padding-top: 8rem;">
+        <p style="font-weight: 600; color: slategray;">See Where People Eats In Trichy</p>
+        <div class=" card shadow-lg scroll">
+          <div class="mt-2" *ngFor="let restaurant of restaurantsArr">
+            <div class=" card-body">
+              <div class="row">
+                <div class="col-10">
+                  <p *ngIf="restaurant.is_delivering_now==1" class="mr-1 " style="word-spacing: 3px;"><img
+                      src={{restaurant.thumb}} class="rounded mr-2" style="width:36px;height:26px">{{restaurant.name}}
+                    <span class="fa fa-star checked mr-2">{{restaurant.user_rating.aggregate_rating}}</span> <i
+                      style="color:green">(Delivery Open)</i> </p>
+                  <p *ngIf="restaurant.is_delivering_now==0" class="mr-1 " style="word-spacing: 3px;"><img
+                      src={{restaurant.thumb}} class="rounded mr-2" style="width:36px;height:26px">{{restaurant.name}}
+                    <span class="fa fa-star checked mr-2">{{restaurant.user_rating.aggregate_rating}}</span> <i
+                      style="color:red">(Delivery Closed)</i> </p>
+                </div>
+                <div class="col-2">
+                  <input type="image" style="float: right;"
+                    (click)="showMap(restaurant.location.latitude,restaurant.location.longitude)" class="mr-2"
+                    src="../assets/direction.png">
+                </div>
+              </div>
+            </div>
+            <p style="margin-left: 3.5rem;">Cuisines: {{restaurant.cuisines}}</p>
+            <p style="margin-left: 3.5rem;">Menu & Order : <a href={{restaurant.menu_url}}>Click Here</a></p>
+            <hr>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
